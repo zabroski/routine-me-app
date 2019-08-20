@@ -20,7 +20,7 @@ authRouter.post('/login', (req, res, next) => {
 
         const { email, id } = user
         const payload = {email, id}
-        const token = jwtSign(payload)
+        const token = jwtSign(payload);
 
         return res.json({ user, token })
       })
