@@ -1,4 +1,4 @@
-const { User }  = require('../models/index')
+const { User, Person }  = require('../models/index')
 const bcrypt = require('bcrypt')
 
 const seedDb = async () => {
@@ -20,9 +20,37 @@ const seedDb = async () => {
       name: "Tony Stark",
       email: "ironman@fakemail.com",
       password: 'password'
+    });
+
+
+    // routine start here
+
+
+    await Person.create({
+      name: "mike",
+      descricription: "Mike",
+      date: 'password'
     })
 
-    
+
+    await Person.create({
+      name: "mike",
+      descricription: "Trevor",
+      date: '11'
+    })
+
+    await Person.create({
+      name: "mike",
+      descricription: "Tyler",
+      date: 'password'
+    })
+
+    await Person.create({
+      name: "mike",
+      descricription: "Issouf",
+      date: 'password'
+    })
+
 
   } catch(e) {
     console.log(e);

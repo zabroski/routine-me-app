@@ -14,4 +14,6 @@ module.exports = (db, Sequelize) => {
             allowNull: false
         }
     })
+
+
 } 

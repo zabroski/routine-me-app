@@ -55,4 +55,87 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: err.message})
 })
 
+
+
+//routine srart here
+
+
+
+app.get('/', (req, res) => {
+  res.send('Welcome, you are about to build your first full-stack application.')
+})
+
+// GET all routine
+app.get('/person', async (req, res) => {
+  // let allIceCreams = await IceCream.findAll();
+  res.send( await IceCream.findAll())
+
+})
+
+// GET one ice routine
+app.get('/person/:id', async (req, res) => {
+
+  let iceCream = await IceCream.findByPk(req.params.id)
+  res.send(iceCream)
+
+})
+
+// POST one routine
+app.post('/person/', async (req, res) => {
+  try {
+    const oneIceCream = await IceCream.create(req.body);
+    res.send(oneIceCream)
+
+  } catch(e) {
+    console.log(e)
+  }
+
+})
+
+// PUT(edit) one iroutine
+app.put('/person/:id/edit', async (req, res) => {
+  let iceCreamChange = await IceCream.update(
+    {
+      flavor: req.body.flavor,
+      rating: req.body.rating,
+      comments: req.body.comments
+    },
+      {
+        where: {id: req.params.id
+      }
+    });
+
+  res.send(iceCreamChange)
+})
+
+// DELETE routine
+app.delete('/person/:id/delete', async (req, res) => {
+  try {
+    const iceCream = await IceCream.findByPk(req.params.id)
+    if (iceCream) {
+        await iceCream.destroy()
+        res.send('ok')
+    } else{
+        let err = new Error('Ice crean Not Found')
+        res.status(400).send(err.toString())
+    } 
+} catch(error) {
+    throw error
+}
+});
+
+// Generic error handler
+function errorHandler (err, req, res, next) {
+  res.status(500)
+  res.render('error', { error: err })
+}
+
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}!`)
+})
+
+
+
+
+
  app.listen(PORT, () => console.log(`App is up and running listening on port ${PORT}`))

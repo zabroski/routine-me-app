@@ -26,7 +26,6 @@ class App extends React.Component {
   async componentDidMount() {
     try{
       const fetchUser = await getProfile()
-      console.log(fetchUser)
 
       this.setState(state => {
         return {
@@ -123,9 +122,7 @@ signUpUser = async (credentials) => {
             render = {(props) => <Signup {...props} handleSignUp={this.signUpUser} isSignedIn={isSignedIn} />}
              />
         </main>
-      
-         
-   
+          
       </div>
     );
   }

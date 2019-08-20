@@ -17,21 +17,21 @@
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "pg": "^7.12.1",
-    "sequelize": "^4.41.1"
+    "react-router-dom": "^5.0.1",
+    "sequelize": "^5.15.1"
   },
   "devDependencies": {},
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "db:init": "dropdb --if-exists express_auth_db && createdb express_auth_db",
     "db:reset": "node ./scripts/resetDb.js",
-    "db:seed": "node ./scripts/seedDb.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "db:seed": "node ./scripts/seedDb.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zabroski/routine-me-app.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
